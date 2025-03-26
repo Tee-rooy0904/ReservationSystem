@@ -63,19 +63,18 @@ window.addEventListener('load', function() {
 
         const isValidPhone = /^\d{10}$/.test(phone);
 
-        // Add touch-friendly validation messages
+        // Collect all validation errors
         const errors = [];
         if (!role) errors.push('Please select a role');
-        if (!isValidId) errors.push('Please enter a valid ID number');
+        if (!isValidId) errors.push(`Please enter a valid ${role === 'personnel' ? '3-digit' : '9-10 digit'} ID number`);
         if (!fullName) errors.push('Please enter your full name');
         if (!isValidPhone) errors.push('Please enter a valid 10-digit phone number');
         if (!date) errors.push('Please select a date');
         if (!time) errors.push('Please select a time');
 
         if (errors.length > 0) {
-            if (isMobile) {
-                alert(errors.join('\n'));
-            }
+            // Show all errors in a single alert
+            alert(errors.join('\n'));
             submitButton.classList.remove('btn-success');
             submitButton.classList.add('btn-danger');
             return false;
@@ -86,18 +85,12 @@ window.addEventListener('load', function() {
         return true;
     };
 
-    const formInputs = form.querySelectorAll('input, select');
-    formInputs.forEach(input => {
-        input.addEventListener('input', validateForm);
-        input.addEventListener('change', validateForm);
-    });
-
+    // Remove the duplicate alert in form submit
     form.addEventListener('submit', function(e) {
         e.preventDefault();
         
         if (!validateForm()) {
-            alert('Please fill in all required fields');
-            return;
+            return; // Don't show another alert here
         }
 
         const formData = {
