@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reservation System Registration</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="style.css" rel="stylesheet">
+</head>
+<body>
+    <header class="text-center mb-4">
+        <h4 style="font-weight: lighter; font-family:Georgia, 'Times New Roman', Times, serif">
+            <img src="smcc-logo.jpg" alt="#" style="height: 40px; width: 40px;"> SMCC Reservation
+        </h4>
+    </header>
+    <div class="card">
+        <div class="card-body bg-primary">
+            <form id="reservationForm">
+                <div class="row">
+                    <div class="col-md-6 form-group text-light">
+                        <label for="role">Role</label>
+                        <select class="form-control" id="role">
+                            <option value="student">Student</option>
+                            <option value="personnel">Personnel</option>
+                        </select>
+                    </div>
+                    <div class="col-md-6 form-group text-light">
+                        <label for="id">ID Number</label>
+                        <input type="tel" class="form-control" id="idNo" placeholder="Enter your ID number">
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6 form-group text-light">
+                        <label for="fullName">Full Name</label>
+                        <input type="text" class="form-control" id="fullName" placeholder="Enter your full name">
+                    </div>
+                    <div class="col-md-6 form-group text-light">
+                        <label for="sex">Sex</label>
+                        <select class="form-control" id="sex">
+                            <option value="male">Male</option>
+                            <option value="female">Female</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6 form-group text-light">
+                        <label for="phone">Phone Number</label>
+                        <div class="input-group">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text">+63</span>
+                            </div>
+                            <input type="tel" class="form-control" id="phone" placeholder="Enter your phone number">
+                        </div>
+                    </div>
+                    <div class="col-md-6 form-group text-light">
+                        <label for="date">Reservation Date</label>
+                        <input type="date" class="form-control" id="date" min="" onkeydown="return false">
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6 form-group text-light">
+                        <label for="time">Reservation Time</label>
+                        <input type="time" class="form-control" id="time">
+                    </div>
+                    <div class="col-md-6 form-group">
+                        <label for="equipments" style="color: white;">Equipments</label><br>
+                        <div class="equipments-container">
+                            <div class="equipment-item">
+                                <input type="checkbox" id="eq1" name="equipment" value="LED Wall">
+                                <label for="eq1">LED Wall</label>
+                            </div>
+                            <div class="equipment-item">
+                                <input type="checkbox" id="eq2" name="equipment" value="Live Streaming Camera">
+                                <label for="eq2">Live Streaming Camera</label>
+                            </div>
+                            <div class="equipment-item">
+                                <input type="checkbox" id="eq3" name="equipment" value="TV">
+                                <label for="eq3">TV</label>
+                            </div>
+                            <div class="equipment-item">
+                                <input type="checkbox" id="eq4" name="equipment" value="Tripad">
+                                <label for="eq4">Tripad</label>
+                            </div>
+                            <div class="equipment-item">
+                                <input type="checkbox" id="eq5" name="equipment" value="HDMI">
+                                <label for="eq5">HDMI</label>
+                            </div>
+                            <div class="equipment-item">
+                                <input type="checkbox" id="eq6" name="equipment" value="Lights">
+                                <label for="eq6">Lights</label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <button type="submit" class="btn btn-danger btn-block">Book</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Replace the QR code overlay with status message -->
+    <!-- Update the status overlay -->
+    <div id="scanOverlay" class="scan-overlay">
+        <button class="close-btn">&times;</button>
+        <div class="scan-content">
+            <h2>Booking Status</h2>
+            <div class="status-container">
+                <div id="pendingStatus">
+                    <svg viewBox="25 25 50 50">
+                        <circle r="20" cy="50" cx="50"></circle>
+                    </svg>
+                    <span>Your booking is pending admin approval...</span>
+                </div>
+                <div id="approvedStatus" style="display: none;">
+                    <img src="approved.png" alt="Approved" class="approved-icon">
+                    <span>Your booking has been approved!</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+    <script src="index.js"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
